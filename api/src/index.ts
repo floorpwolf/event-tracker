@@ -4,12 +4,11 @@ import { eventRouter } from '@/routes/events';
 import prisma from '@/database/client';
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
 app.use('/api/events', eventRouter);
-
-const PORT = process.env.PORT || 3001;
 
 const startServer = async () => {
   await prisma.$connect();

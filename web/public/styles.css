@@ -1,5 +1,28 @@
-body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-#events { margin-top: 30px; }
-.event { background: #f5f5f5; padding: 15px; margin-bottom: 15px; border-radius: 8px; }
-.event h3 { margin-top: 0; color: #2c3e50; }
-.event p { margin: 5px 0; }
+:root {
+  --primary-color: #2563eb;
+  --background-color: #f8fafc;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--background-color);
+}
+
+.event-card {
+  background: white;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.event-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}

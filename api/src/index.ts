@@ -1,23 +1,14 @@
-import express from 'express';
-import cors from 'cors';
-import { eventRouter } from '@/routes/events';
-import prisma from '@/database/client';
+const EventTracker = require('./EventTracker');
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+// Initialize the EventTracker instance
+const tracker = new EventTracker();
 
-app.use(cors());
-app.use(express.json());
-app.use('/api/events', eventRouter);
+// Example usage
+tracker.trackEvent('user_login', { userId: '12345' });
+tracker.trackEvent('page_view', { page: 'home' });
 
-const startServer = async () => {
-  await prisma.$connect();
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-};
+console.log('Tracked Events:', tracker.getEvents());
 
-startServer().catch((err) => {
-  console.error('Failed to start server:', err);
-  process.exit(1);
-});
+tracker.clearEvents();
+
+console.log('Tracked Events after clearing:', tracker.getEvents());

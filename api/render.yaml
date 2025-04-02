@@ -2,8 +2,13 @@ services:
   - type: web
     name: event-tracker-api
     runtime: node
-    buildCommand: npm run build
-    startCommand: npm run migrate && npm start
+    buildCommand: |
+      cd api
+      npm run build
+    startCommand: |
+      cd api
+      npm run migrate
+      node dist/index.js
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -11,7 +16,4 @@ services:
           property: connectionString
       - key: NODE_ENV
         value: production
-
-databases:
-  - name: eventtracker
-    plan: free
+    nodeVersion: 20
